@@ -1,8 +1,12 @@
+<?php 
+  $name = "John";
+  $date = date("Y-m-d");
+?>
 <html>
   <head>
-    <title>PHP Test</title>
+    <title>Assignment 1</title>
   </head>
   <body>
-    <?php echo '<p>Hello World</p>'; ?> 
-
+    <p>Welcome <?php echo $name?>, You successfully logged in at <?php echo $date?> </p>
+  </body>
 </html>
