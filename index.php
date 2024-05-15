@@ -4,9 +4,10 @@
 ?>
 <html>
   <head>
-    <title>Assignment 1</title>
+    <title>Farrell</title>
   </head>
   <body>
+    <h1> Assignment 1</h1>
     <p>Welcome <?php echo $name?>, You successfully logged in at <?php echo $date?> </p>
   </body>
 </html>
