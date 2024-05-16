@@ -1,11 +1,13 @@
 <?php 
+  session_start();
 
-session_start();
-    if(isset($_SESSION["authenticated"]) == true){
-        header("Location: login.php");
-    }
-    $name = $_SESSION["userLoggedIn"];
-    $date = date("Y-m-d");
+  if($_SESSION['authenticated'] !== true) {
+    header('Location: /login.php');
+  }
+
+	// This is giving an error because if this session variable isn't set, then it can't be assigned.
+  $name = $_SESSION["userLoggedIn"];
+  $date = date("Y-m-d");
 ?>
 <html>
   <head>

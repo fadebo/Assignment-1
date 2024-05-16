@@ -11,7 +11,7 @@
   //echo "Username: " . $username . "<br>";
   //echo "Password: " . $password . "<br>";
   if ($valid_username == $username && $valid_password == $password){
-    $_SESSION["userLoggedIn"] = $username;
+    $_SESSION["userLoggedIn"] = $valid_username;
     $_SESSION["authenticated"] = true;
     if(isset($_SESSION["userLoggedIn"])) {
         header("Location: /");
@@ -27,8 +27,8 @@
     }else{
       $_SESSION['login_attempts'] = $_SESSION['login_attempts'] + 1;
     }
-    echo "Unsuccessful login, Login Attempts: " . $_SESSION['login_attempts'] . "<br>";
-
-    header("Refresh: 5; url: /login.php");
+    header("Location: /login.php");
+    //echo "Unsuccessful login, Login Attempts: " . $_SESSION['login_attempts'] . "<br>";
+    
   }
 ?>
