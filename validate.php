@@ -1,15 +1,26 @@
-<?php 
-  
-  $valid_name = "Farrell";
-  $valid_pass = "password";
+<?php
 
-  $name = $_REQUEST["username"];
-  $pass = $_REQUEST["password"];
-  if ($name == $valid_name && $pass == $valid_pass){
+  session_start();
+
+  $valid_username = "farrell";
+  $valid_password = "password";
+
+  $username = $_REQUEST['username'];
+  $password = $_REQUEST['password'];
+
+  //echo "Username: " . $username . "<br>";
+  //echo "Password: " . $password . "<br>";
+  if ($valid_username == $username && $valid_password == $password){
     //header("Location: /index.php");
-    echo "You are logged in";
+    echo "Success";
   }else{
     //header("Location: /login.php");
-    echo "Failure";
+    //echo "Failure";
+    if (!isset( $_SESSION['login_attempts'] )){
+      $_SESSION['login_attempts'] = 1;
+    }else{
+      $_SESSION['login_attempts'] = $_SESSION['login_attempts'] + 1;
+    }
+    echo "Unsuccessful login, Login Attempts: " . $_SESSION['login_attempts'] . "<br>";
   }
 ?>
