@@ -12,6 +12,7 @@
   //echo "Password: " . $password . "<br>";
   if ($valid_username == $username && $valid_password == $password){
     $_SESSION["userLoggedIn"] = $username;
+    $_SESSION["authenticated"] = true;
     if(isset($_SESSION["userLoggedIn"])) {
         header("Location: /");
     }
@@ -20,6 +21,7 @@
   }else{
     //header("Location: /login.php");
     //echo "Failure";
+    $_SESSION["authenticated"] = false;
     if (!isset( $_SESSION['login_attempts'] )){
       $_SESSION['login_attempts'] = 1;
     }else{

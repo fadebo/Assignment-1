@@ -1,8 +1,7 @@
 <?php 
 
 session_start();
-
-    if(!isset($_SESSION["userLoggedIn"])) {
+    if(isset($_SESSION["authenticated"]) == true){
         header("Location: login.php");
     }
     $name = $_SESSION["userLoggedIn"];
