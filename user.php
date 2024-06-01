@@ -31,6 +31,27 @@ Class User {
         return "Username already exists";
       }
   }
+
+  public function validatePasswords($pw) {
+      if(strlen($pw) < 5 || strlen($pw) > 25) {
+          return "Password Length must be between 5 and 25 characters";
+      }
+      else{
+        return "valid";
+      }
+      // if(!preg_match("/[a-z]/", $pw)){
+      //   return "Password must contain at least one lowercase letter";
+      // }
+      // if(!preg_match("/[A-Z]/", $pw)){
+      //   return "Password must contain at least one uppercase letter";
+      // }
+      // if(!preg_match("/[0-9]/", $pw)){
+      //   return "Password must contain at least one number";
+      // }
+      // if(!preg_match("/[^a-zA-Z0-9]/", $pw)){
+      //   return "Password must contain at least one special character";
+      // }
+  }
   
 }
   

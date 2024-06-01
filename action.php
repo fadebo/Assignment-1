@@ -11,15 +11,22 @@ session_start();
         $result = $user->validateUsername($username);
         if($result !== "Username already exists"){
           if($password == $password2){
-            $password = md5($password);
-            $user->create_user($username, $password);
-            header("Location: /login.php");
+            $result2 = $user->validatePasswords($password);
+            if($result2 === "valid"){
+              $password = md5($password);
+              $user->create_user($username, $password);
+              header("Location: /login.php");
+            }else{
+              $_SESSION["msg"] === $result2;
+              header("Location: /register.php");
+            }
           }else{
             $msg = "Passwords do not match";
             $_SESSION["msg"] = $msg;
             header("Location: /register.php");
           }
-        }else{
+        }
+        else{
           $msg = "Username already exists";
           $_SESSION["msg"] = $msg;
           header("Location: /register.php");
@@ -30,7 +37,8 @@ session_start();
         $_SESSION["msg"] = $msg;
         header("Location: /register.php");
       }
-    }else{
+    }
+    else{
       $msg = "Please fill in all fields";
       $_SESSION["msg"] = $msg;
       header("Location: /register.php");
