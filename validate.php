@@ -2,8 +2,16 @@
 
   session_start();
 
-  $valid_username = "farrell";
-  $valid_password = "password";
+  // require_once ('user.php');
+  // $user = new User();
+  // if(isset($_POST['username']) && isset($_POST['password'])){
+  //   $username = $_POST['username'];
+  //   $password = $_POST['password'];
+  //   $user->create_user($username, $password);
+  //   header("Location: /");
+  // }
+ $valid_username = "farrell";
+ $valid_password = "password";
 
   $username = $_REQUEST['username'];
   $password = $_REQUEST['password'];  
