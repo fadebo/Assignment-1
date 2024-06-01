@@ -5,7 +5,7 @@ if(isset($_SESSION["authenticated"]) == false){
   if(isset($_SESSION["login_attempts"])){
     $msg = "Unsuccessful login, Login Attempts: " . $_SESSION['login_attempts'] . "<br>";
   }else{
-    $msg = "Unsuccessful login, Login Attempts: 0 <br>"; // prints a default message, placed for debugging purposes
+    $msg = " "; // prints a default message, placed for debugging purposes
   }
 }else{
   header("Location: /"); // go back to home if loggedIn
@@ -35,7 +35,7 @@ if(isset($_SESSION["authenticated"]) == false){
               <br>
               <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
               <br>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary" name="login">Submit</button>
             </div> 
       </form>
         <p><a href="/register.php">Click here to register</a>

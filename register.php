@@ -31,5 +31,6 @@ else{
               <button type="submit" class="btn btn-primary" name="submit">Submit</button>
             </div> 
       </form>
+    <p><a href="/login.php">Already have an account? Login</a>
   </body>
 </html>

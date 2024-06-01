@@ -11,6 +11,14 @@ Class User {
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $rows;
   }
+  public function get_user_by_username($username){
+    $dbh = db_connect();
+    $statement = $dbh->prepare("SELECT * FROM users WHERE username = :username");
+    $statement->bindParam(':username', $username);
+    $statement->execute();
+    $row = $statement->fetch(PDO::FETCH_ASSOC);
+    return $row;
+  }
 
   public function create_user($username, $password) {
     $dbh = db_connect();
