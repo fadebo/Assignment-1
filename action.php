@@ -13,7 +13,7 @@ session_start();
           if($password == $password2){
             $result2 = $user->validatePasswords($password);
             if($result2 === "valid"){
-              $password = md5($password);
+              $password = password_hash($password, PASSWORD_DEFAULT);
               $user->create_user($username, $password);
               header("Location: /login.php");
             }else{

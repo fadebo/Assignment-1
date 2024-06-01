@@ -18,7 +18,7 @@
 
   $user = new User();
   $result = $user->get_user_by_username($username);
-  $pass = hash("md5", $password);
+  $pass = password_hash($password, PASSWORD_DEFAULT);
     if($result){
       if($result['password'] == $pass){
         $_SESSION['authenticated'] = true;
