@@ -17,39 +17,27 @@
   $password = $_REQUEST['password'];  
 
   $user = new User();
-  $user_result = $user->get_user_by_username($username);
-  $pass = hash("md5", $password)
-  if($user_result['username'] == $username && $user_result['password'] == $pass){
-    $_SESSION['authenticated'] = true;
-    $_SESSION['login_attempts'] = 0;
-    $_SESSION['userLoggedIn'] = $username;
-    header("Location: /");
-  }
-  else{
-    if (!isset($_SESSION['login_attempts'])){
-       $_SESSION['login_attempts'] = 1;
+  $result = $user->get_user_by_username($username);
+  $pass = hash("md5", $password);
+    if($result){
+      if($result['password'] == $pass){
+        $_SESSION['authenticated'] = true;
+        $_SESSION['login_attempts'] = 0;
+        $_SESSION['userLoggedIn'] = $username;
+        header("Location: /");
+      }else{
+        $_SESSION['login_attempts'] = $_SESSION['login_attempts'] + 1;
+        header("Location: /login.php");
+      }
     }else{
-       $_SESSION['login_attempts'] = $_SESSION['login_attempts'] + 1;
+        $_SESSION['authenticated'] = false;
+        if (!isset($_SESSION['login_attempts'])){
+          $_SESSION['login_attempts'] = 1;
+        }else{
+          $_SESSION['login_attempts'] = $_SESSION['login_attempts'] + 1;
         }
-    header("Location: /login.php");
-  }
-
-  //   if($result['password'] == $pass){
-  //       $_SESSION['authenticated'] = true;
-  //       $_SESSION['login_attempts'] = 0;
-  //       $_SESSION['userLoggedIn'] = $username;
-  //       header("Location: /");
-  //   }else{
-  //       $_SESSION['login_attempts'] = $_SESSION['login_attempts'] + 1;
-  //       header("Location: /login.php");
-  //     }
-
-  if (!isset($_SESSION['login_attempts'])){
-       $_SESSION['login_attempts'] = 1;
-    }else{
-       $_SESSION['login_attempts'] = $_SESSION['login_attempts'] + 1;
-        }
-  //       header("Location: /login.php");
+        header("Location: /login.php");
+      }
 
   
   // //echo "Username: " . $username . "<br>";

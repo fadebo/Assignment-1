@@ -10,8 +10,6 @@
   $name = $_SESSION["userLoggedIn"];
   $date = date("Y-m-d");
   $user = new User();
-  $user_list = $user->get_all_users();
-  print_r ($user_list);
 ?>
 <html>
   <head>
