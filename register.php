@@ -1,7 +1,7 @@
 <?php
   session_start();
-if($_SESSION['msg'] !=""){
-  $msg = $_SESSION['msg'];
+if($_SESSION['msg2'] !=""){
+  $msg = $_SESSION['msg2'];
 }
 else{
   $msg = "";

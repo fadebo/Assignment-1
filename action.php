@@ -17,7 +17,7 @@ session_start();
               $user->create_user($username, $password);
               header("Location: /login.php");
             }else{
-              $_SESSION["msg"] === $result2;
+              $_SESSION["msg2"] = "Password Length must be between 5 and 25 characters";
               header("Location: /register.php");
             }
           }else{
