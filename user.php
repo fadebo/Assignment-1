@@ -11,4 +11,10 @@ Class User {
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $rows;
   }
+
+  public function create_user($username, $password) {
+    $dbh = db_connect();
+    $statement = $dbh->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
+    $statement->execute();
+  }
 }

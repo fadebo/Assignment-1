@@ -1,4 +1,5 @@
 <?php 
+ require_once ('user.php');
   session_start();
 
   if($_SESSION['authenticated'] !== true) {
@@ -8,6 +9,9 @@
 	// This is giving an error because if this session variable isn't set, then it can't be assigned.
   $name = $_SESSION["userLoggedIn"];
   $date = date("Y-m-d");
+  $user = new User();
+  $user_list = $user->get_all_users();
+  print_r ($user_list);
 ?>
 <html>
   <head>
